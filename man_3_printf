@@ -1,94 +1,69 @@
-.\" Manpage.
-.\" To correct errors or typs.
-.TH man 3 "15 march 2021" "Holberton School 0x11. C - _printf"
-
+.TH man 3 "19 June 2017" "0.10" "_printf man page"
 .SH NAME
-_printf() - takes input and prints to standard output.
-
+.B _printf
+- Formatted output conversion.
 .SH SYNOPSIS
-#include "holberton.h"
+.B #include "holberton.h"
 
-.SH Sintaxis
-int _printf(const char *format, ...)
-
-.SH format
-This is the string that contains the text to be written to stdout. 
-#include <stdarg.h>
-
+.B int _printf(const char *
+.I format
+.B , ...)
 .SH DESCRIPTION
-The function _printf() sends formatted output to stdout and uses format
-specifiers to convert arguments into strings. The format specifiers are:
-FORMAT outputs a specified format relative to the specifier input.
+.B _printf()
+Prints to standard output under the control of a 
+.I format
+string that specifies how subsequent arguments are converted for output. 
+.SH Return value
+On successful return, these functions return the number of characters printed, excluding the null byte used to end output to strings.
 
-.SH Return Value
-_printf() function returns the number of characters printed (excluding the null byte used to end output to strings).
-
-.B %c
-Prints the character passed as parameter
-
-.B %s
-Prints text string finished with null character.
-
-.B %%
-Prints a single '%' character
-
-.B %d
-Converts argument to signed decimal notation and print it.
-
-.B %i
-Converts argument to unsigned decimal notation and print it.
-
-.B %b
-Convert the unsigned argument to a binary and print it.
-
-.B %u
-Prints the integer unsigned decimal conversion.
-
-.B %o
-Prints the integer unsigned octal conversion.
-
-.B %x
-Unsigned hexadecimal conversion in lowercase form.
-
-.B %X
-Unsigned hexadecimal conversion uppercase form.
-
-.B %p
-Prints a memory address (Pointer).
-
+If an output error is encountered, a negative value is returned.
+.SH Format of the format string
+The format string is composed of 0 or more directives (ordinary characters that are not %), which are copied to the output stream. The format string is also composed of conversion specifications, each of which result in fetching zero or more subsequent arguments. Each conversion specification is introduced by the character % and ends with the conversion specifier.
+The argument must correspond properly with the conversion specifier. By default, the arguments are used in the order given.
+.SH The conversion specifier
+A character that specifies the type of conversion to be applied. The conversion specifiers and their meanings are:
+.TP
+.BR c
+The int argument is converted to an unsigned char, then the resulting character is written
+.TP
+.B s
+The const char * argument is expected to be a pointer to an array of character type (pointer to a string). Characters from the array are written up to a terminating null byte, but do ot include the terminating null byte.
+.TP
+.B S
+Prints a string. Non printable characters are printed as "\x" followed by their ASCII values in two digit hexadecimal
+.TP
+.B d, i
+The int argument is converted to signed decimal notation.
+.TP
+.B x, X
+The unsigned int argument is converted to unsigned lowercase hexadecimal notation(x), or unsigned uppercase hexadecimal notation(X).
+.TP
+.B u
+The unsigned int argument is converted to unsigned decimal notation
+.TP
+.B o, b
+The unsigned int argument is converted to unsigned octal notation(o) or binary notation(b).
+.TP
+.B p
+Address is printed in hexadecimal.
+.TP
+.B r
+Prints a string in reverse.
+.TP
+.B R
+Prints a string converted to rot13
+.TP
+.B %
+A '%' is written but no argument is converted. The complete version specification is '%%'
 .SH EXAMPLE
+To print the day of the year, where weekday and month are pointers to strings and day and year are integers:
 
-.RS
 #include "holberton.h"
 
-int main(void)
-
-{
-
-
-    _printf("%s", String);
-
-
-   _printf("I am a character %c", 'A');
-
-
-   _printf("I am an integer %d", 12);
-
-
-   _printf("I am percentage %%", %);
-
-
-    return (0);
-
-
-}
-.RE
-
+_printf("%s, %s %d, %d\\n", weekday, month, day, year);
 .SH SEE ALSO
-printf(3)
-
+.I printf(3)
 .SH BUGS
 No known bugs.
-
 .SH AUTHOR
-Alexander Forero, Daniel Escobar and Carolina Capote
+Alexa Orrico, Daniel Ojeda

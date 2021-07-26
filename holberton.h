@@ -1,36 +1,32 @@
-#ifndef HOLBERTON_H_
-#define HOLBERTON_H_
+#ifndef _HOLBERTON_H_
+#define _HOLBERTON_H_
 
-#include <stdio.h>
 #include <stdarg.h>
-#include <stdlib.h>
-#include <unistd.h>
 /**
- *struct all - strcuture function
- *@all: pointer to a char
- *@f: poniter to a function
+ * struct print - structure for printing various types
+ * @t: type to print
+ * @f: function to print
  */
-typedef struct all
+typedef struct print
 {
-	char *all;
-	int (*f)(va_list x);
-} all_t;
+	char *t;
+	int (*f)(va_list);
+} print_t;
 
 int _putchar(char c);
-int aux(int arg);
-int (*get_func(char s))(va_list a);
 int _printf(const char *format, ...);
-int print_char(va_list arguments_list);
-int print_string(va_list arguments_list);
-int print_porc(va_list arguments_list);
-int print_digit(va_list arguments_list);
-int print_rev(va_list arguments_list);
-int print_bin(va_list arguments_list);
-int print_rot(va_list arguments_list);
-int print_uns(va_list arguments_list);
-int print_oct(va_list arguments_list);
-int print_hex(va_list arguments_list);
-int print_heX(va_list arguments_list);
-int print_add(va_list arguments_list);
-int print_HEX(unsigned long int n);
-#endif
+int print_c(va_list c);
+int print_s(va_list s);
+int print_i(va_list i);
+int print_d(va_list d);
+int print_u(va_list u);
+int print_b(va_list b);
+int print_o(va_list o);
+int print_x(va_list x);
+int print_X(va_list X);
+int print_p(va_list p);
+int print_S(va_list S);
+int print_r(va_list r);
+int print_R(va_list R);
+
+#endif  /* _HOLBERTON_H */
