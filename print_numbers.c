@@ -39,7 +39,7 @@ int print_i(va_list i)
 	return (count);
 }
 
-
+/**
  * print_d - prints a decimal
  * @d: decimal to print
  *
